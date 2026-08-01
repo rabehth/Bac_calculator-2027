@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <script>
+    try{
+        var savedTheme = localStorage.getItem('bac2027_theme');
+        if(savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    } catch(e){}
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>حاسبة معدل البكالوريا الجزائرية 2027</title>
+    <meta name="description" content="حساب معدل البكالوريا الجزائرية الجيل الثاني مع النظام الجديد للمعاملات والتقويم المستمر لكل الشعب.">
+    <meta name="robots" content="index, follow">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4F46E5">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="معدل الباك">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="header-content">
+            <div class="brand">
+                <span class="icon">🎓</span>
+                <div>
+                    <h1>حساب معدل البكالوريا</h1>
+                    <p class="subtitle">الجزائر 2027 — المعاملات الرسمية الجديدة</p>
+                </div>
+            </div>
+            <button id="themeToggle" class="theme-btn" aria-label="تبديل الوضع">🌙</button>
+        </div>
+        <div class="progress-bar-container">
+            <div id="progressFill" class="progress-fill" style="width: 0%;"></div>
+            <span id="progressLabel" class="progress-label">0%</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- شريط اختيار الشعبة -->
+        <section class="branches-section">
+            <div id="branchesGrid" class="branches-grid"></div>
+        </section>
+
+        <!-- خيار اللغة الأمازيغية -->
+        <div class="amazigh-card">
+            <label class="switch-label">
+                <input type="checkbox" id="amazighToggle">
+                <span class="slider round"></span>
+                <span class="switch-text">
+                    <strong>اللغة الأمازيغية 🗣️</strong>
+                    <small>اختياري — للولايات المعنية فقط</small>
+                </span>
+            </label>
+        </div>
+
+        <!-- بطاقة النتيجة والدوائر -->
+        <section class="result-card">
+            <div class="result-display">
+                <div class="ring-container">
+                    <svg class="ring-svg" viewBox="0 0 120 120">
+                        <circle class="ring-bg" cx="60" cy="60" r="50"></circle>
+                        <circle id="ringFg" class="ring-fg" cx="60" cy="60" r="50"></circle>
+                    </svg>
+                    <div class="ring-text">
+                        <span id="avgVal" class="avg-number">--</span>
+                        <span class="avg-denom">/ 20</span>
+                    </div>
+                </div>
+                <div class="result-details">
+                    <h2 id="verdict" class="verdict">أدخل العلامات</h2>
+                    <p id="verdictSub" class="verdict-sub">املأ العلامات لترى نتيجتك</p>
+                    <div class="stats-row">
+                        <span>المعاملات: <strong id="sumCoefEl">0</strong></span>
+                        <span>النقاط: <strong id="sumPtsEl">0</strong></span>
+                    </div>
+                </div>
+            </div>
+            <div id="formulaNotice" class="formula-notice">
+                📐 المعدل = مجموع (العلامة × المعامل) ÷ مجموع المعاملات — النجاح من 10/20
+            </div>
+        </section>
+
+        <!-- قائمة المواد -->
+        <section class="subjects-section">
+            <div id="subjectsList" class="subjects-list"></div>
+        </section>
+
+        <!-- أزرار العمليات -->
+        <section class="actions-section">
+            <button id="resetBtn" class="btn btn-secondary">🔄 إعادة تعيين</button>
+            <button id="copyBtn" class="btn btn-outline">📋 نسخ النتيجة</button>
+            <button id="shareBtn" class="btn btn-primary">🎁 مشاركة</button>
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <p>حاسبة معدل البكالوريا الجزائرية 2027 — مجاناً للجميع</p>
+    </footer>
+
+    <!-- ربط السكريبت الرئيسي -->
+    <script src="script.js?v=2"></script>
+</body>
+</html>
