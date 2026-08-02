@@ -1,1 +1,471 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<!-- تطبيق الوضع الليلي المحفوظ فورًا (قبل رسم الصفحة) لتفادي أي وميض بالألوان الخاطئة -->
+<script>
+  try{
+    var savedTheme = localStorage.getItem('bacCalc2027_theme');
+    if(savedTheme === 'dark') document.documentElement.setAttribute('data-theme','dark');
+  }catch(e){}
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
+<!-- ===== عنوان الصفحة ===== -->
+<title>حاسبة معدل البكالوريا الجزائرية 2027</title>
+
+<!-- ===== وصف وكلمات مفتاحية لتحسين محركات البحث (SEO) ===== -->
+<meta name="description" content="حاسبة معدل البكالوريا الجزائرية 2027 — احسب معدلك بدقة في جميع الشعب (علوم تجريبية، رياضيات، هندسة، تسيير واقتصاد، آداب وفلسفة، لغات أجنبية، فنون) وفق المعاملات الرسمية الجديدة لوزارة التربية الوطنية، مع دعم المواد الاختيارية كالأمازيغية والتربية البدنية.">
+<meta name="keywords" content="حاسبة البكالوريا, معدل البكالوريا, بكالوريا الجزائر 2027, معاملات البكالوريا الجديدة, حساب معدل البكالوريا, شعب البكالوريا, bac algerie 2027, معدل البكالوريا الجزائرية, وزارة التربية الوطنية, الإصلاح الجديد للمناهج">
+<meta name="author" content="حاسبة معدل البكالوريا الجزائرية">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph (لعرض احترافي عند مشاركة الرابط) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="حاسبة معدل البكالوريا الجزائرية 2027">
+<meta property="og:description" content="احسب معدل البكالوريا بدقة حسب المعاملات الرسمية الجديدة لجميع الشعب.">
+<meta property="og:locale" content="ar_DZ">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="حاسبة معدل البكالوريا الجزائرية 2027">
+<meta name="twitter:description" content="احسب معدل البكالوريا بدقة حسب المعاملات الرسمية الجديدة لجميع الشعب.">
+
+<!-- ===== إعدادات PWA: يمكن تثبيت الموقع كتطبيق على الهاتف ===== -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#4F46E5">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="معدل البكالوريا">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,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">
+
+<!-- ===== الخطوط: IBM Plex Sans Arabic (خط عربي احترافي وواضح) ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* حاسبة معدل البكالوريا الجزائرية 2027 — الأنماط (CSS) */
+/* ===== متغيرات التصميم: الألوان، الحواف، الظلال ===== */
+  :root{
+    --bg:#F3F5FB;
+    --card:#FFFFFF;
+    --card-border:#E8EAF3;
+    --ink:#1A1E2E;
+    --ink-soft:#6B7280;
+    --ink-faint:#9CA3AF;
+    --primary:#4F46E5;
+    --primary-dark:#4338CA;
+    --primary-soft:#EEEEFE;
+    --success:#16A34A;
+    --success-soft:#E9F9EE;
+    --danger:#DC2626;
+    --danger-soft:#FDEDEC;
+    --amber:#D97706;
+    --amber-soft:#FEF3E2;
+    --topbar-bg:rgba(243,245,251,0.85);
+    --input-bg:#FBFBFE;
+    --r-lg:22px;
+    --r-md:16px;
+    --r-sm:11px;
+    --sh-sm:0 1px 2px rgba(16,24,40,.06), 0 1px 3px rgba(16,24,40,.07);
+    --sh-md:0 6px 16px rgba(16,24,40,.08), 0 2px 6px rgba(16,24,40,.05);
+    --sh-lg:0 16px 40px rgba(16,24,40,.14);
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+
+  /* ===== الوضع الليلي: تجاوز نفس المتغيرات بألوان داكنة مريحة للعين ===== */
+  html[data-theme="dark"]{
+    --bg:#12141C;
+    --card:#1B1F2B;
+    --card-border:#2A2F3F;
+    --ink:#F0F2F8;
+    --ink-soft:#A9AFC3;
+    --ink-faint:#767C90;
+    --primary:#7C6FF0;
+    --primary-dark:#9B90FF;
+    --primary-soft:#26234A;
+    --success:#22C55E;
+    --success-soft:#123321;
+    --danger:#F87171;
+    --danger-soft:#3B1A1A;
+    --amber:#FBBF24;
+    --amber-soft:#3A2A0A;
+    --topbar-bg:rgba(18,20,28,0.85);
+    --input-bg:#11141C;
+  }
+  body{ transition:background-color .3s ease, color .3s ease; }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    font-family:'IBM Plex Sans Arabic',sans-serif;
+    color:var(--ink);
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  .app{
+    max-width:560px;
+    margin:0 auto;
+    padding:0 0 60px;
+  }
+
+  /* ===== الشريط العلوي: الشعار وشريط التقدّم ===== */
+  .topbar{
+    position:sticky; top:0; z-index:20;
+    background:var(--topbar-bg);
+    backdrop-filter:blur(14px) saturate(160%);
+    -webkit-backdrop-filter:blur(14px) saturate(160%);
+    padding:16px 20px 12px;
+    border-bottom:1px solid var(--card-border);
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+  }
+  .brand img{width:42px;height:42px;border-radius:12px;box-shadow:var(--sh-sm);}
+  .brand-text{flex:1; min-width:0;}
+  .brand-text h1{
+    font-size:16px; font-weight:700; margin:0; line-height:1.3;
+  }
+  .brand-text .tag{
+    font-size:11.5px; color:var(--ink-soft); font-weight:500;
+  }
+  .theme-toggle{
+    flex:0 0 auto;
+    width:42px; height:42px;
+    border-radius:12px;
+    border:1px solid var(--card-border);
+    background:var(--card);
+    font-size:18px;
+    cursor:pointer;
+    box-shadow:var(--sh-sm);
+    transition:transform .15s var(--ease), background .2s ease;
+  }
+  .theme-toggle:active{transform:scale(0.9);}
+
+  .progress-row{
+    display:flex; align-items:center; gap:10px;
+    margin-top:14px;
+  }
+  .progress-track{
+    flex:1; height:8px; border-radius:99px;
+    background:var(--card-border);
+    overflow:hidden;
+  }
+  .progress-fill{
+    height:100%; border-radius:99px;
+    background:linear-gradient(90deg, var(--primary), #7C6FF0);
+    width:0%;
+    transition:width .5s var(--ease);
+  }
+  .progress-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px; font-weight:600; color:var(--primary-dark);
+    min-width:38px; text-align:left;
+  }
+  .progress-count{
+    font-size:11px; color:var(--ink-faint); margin-top:6px;
+    font-family:'IBM Plex Mono',monospace;
+  }
+
+  /* ===== تنبيه المواد الناقصة ===== */
+  .missing-banner{
+    display:none;
+    margin:12px 20px 0;
+    background:var(--amber-soft);
+    color:var(--amber);
+    border-radius:var(--r-md);
+    padding:12px 14px;
+    font-size:12.5px; line-height:1.8;
+    animation:cardIn .35s var(--ease);
+  }
+  .missing-banner.show{display:block;}
+  .missing-banner b{font-weight:700;}
+
+  /* ===== منتقي الشعبة (أزرار قابلة للتمرير أفقيًا داخل حاويتها فقط) ===== */
+  .branch-scroller{
+    display:flex; gap:8px; overflow-x:auto;
+    padding:16px 20px 4px;
+    scrollbar-width:none;
+  }
+  .branch-scroller::-webkit-scrollbar{display:none;}
+  .chip{
+    flex:0 0 auto;
+    font-family:'IBM Plex Sans Arabic',sans-serif;
+    font-weight:600; font-size:13.5px;
+    padding:10px 16px;
+    border-radius:99px;
+    border:1px solid var(--card-border);
+    background:var(--card);
+    color:var(--ink);
+    cursor:pointer;
+    box-shadow:var(--sh-sm);
+    display:flex; align-items:center; gap:6px;
+    transition:transform .18s var(--ease), background .18s ease, color .18s ease, box-shadow .18s ease;
+  }
+  .chip:active{transform:scale(0.95);}
+  .chip.active{
+    background:var(--primary);
+    color:#fff;
+    border-color:var(--primary);
+    box-shadow:0 6px 16px rgba(79,70,229,.32);
+  }
+  .chip .dot{width:6px;height:6px;border-radius:50%;flex:0 0 auto;}
+  .chip .dot.new{background:#16A34A;}
+  .chip.active .dot.new{background:#BBF7D0;}
+  .chip .dot.old{background:#D97706;}
+  .chip.active .dot.old{background:#FDE9C7;}
+
+  .legend{
+    display:flex; gap:16px; justify-content:center;
+    font-size:11px; color:var(--ink-faint);
+    padding:2px 20px 6px;
+  }
+  .legend span{display:flex; align-items:center; gap:5px;}
+  .legend .dot{width:6px;height:6px;border-radius:50%;}
+  .legend .dot.new{background:#16A34A;}
+  .legend .dot.old{background:#D97706;}
+
+  /* ===== بطاقات المواد الإجبارية ===== */
+  .cards{
+    padding:8px 20px 4px;
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--card-border);
+    border-radius:var(--r-md);
+    padding:14px 16px;
+    box-shadow:var(--sh-sm);
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    opacity:0; transform:translateY(8px);
+    animation:cardIn .45s var(--ease) forwards;
+    transition:box-shadow .2s ease, border-color .2s ease;
+  }
+  .card.filled{
+    border-color:rgba(79,70,229,.25);
+    box-shadow:0 2px 10px rgba(79,70,229,.08);
+  }
+  .card:focus-within{
+    border-color:var(--primary);
+    box-shadow:0 0 0 4px var(--primary-soft);
+  }
+  @keyframes cardIn{
+    to{opacity:1; transform:translateY(0);}
+  }
+  .card-left{display:flex; flex-direction:column; align-items:flex-start; gap:2px; min-width:0; flex:1;}
+  .subject-name{
+    font-weight:600; font-size:14.5px;
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:100%;
+  }
+  .subject-pts{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px; font-weight:500;
+    color:var(--ink-faint);
+    transition:color .2s ease;
+  }
+  .card.filled .subject-pts{ color:var(--primary-dark); }
+  .coef-pill{
+    font-family:'IBM Plex Mono',monospace;
+    font-weight:600; font-size:12px;
+    background:var(--primary-soft);
+    color:var(--primary-dark);
+    padding:3px 9px;
+    border-radius:99px;
+    flex:0 0 auto;
+  }
+  .mark-field{
+    position:relative;
+    flex:0 0 auto;
+  }
+  .field-clear{
+    position:absolute; top:-6px; left:-6px;
+    width:20px; height:20px; border-radius:50%;
+    border:none; background:var(--ink-faint); color:#fff;
+    font-size:12px; line-height:1; cursor:pointer;
+    display:none; align-items:center; justify-content:center;
+    box-shadow:0 1px 3px rgba(0,0,0,.2);
+    transition:background .15s ease, transform .15s ease;
+  }
+  .field-clear.show{display:flex;}
+  .field-clear:active{transform:scale(0.85);}
+  .field-clear:hover{background:var(--danger);}
+  input.mark{
+    width:78px;
+    padding:9px 6px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:15px; font-weight:600;
+    text-align:center;
+    border:1.5px solid var(--card-border);
+    border-radius:var(--r-sm);
+    background:var(--input-bg);
+    color:var(--ink);
+    transition:border-color .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  input.mark::placeholder{
+    font-family:'IBM Plex Sans Arabic',sans-serif;
+    font-size:10.5px; font-weight:500;
+    color:var(--ink-faint);
+  }
+  input.mark:focus{
+    outline:none;
+    border-color:var(--primary);
+    background:var(--card);
+    box-shadow:0 0 0 4px var(--primary-soft);
+  }
+  input.mark.valid{border-color:rgba(22,163,74,.45); background:var(--success-soft);}
+  input.mark.err{border-color:var(--danger); background:var(--danger-soft); animation:shake .32s ease;}
+  @keyframes shake{
+    0%,100%{transform:translateX(0);} 25%{transform:translateX(-4px);} 75%{transform:translateX(4px);}
+  }
+
+  /* ===== بطاقات المواد الاختيارية (الأمازيغية والتربية البدنية) ===== */
+  .opt-card{
+    background:var(--card);
+    border:1px dashed var(--card-border);
+    border-radius:var(--r-md);
+    padding:12px 16px;
+    display:flex; flex-direction:column; gap:10px;
+    animation:cardIn .45s var(--ease) forwards;
+    opacity:0; transform:translateY(8px);
+  }
+  .opt-head{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+  }
+  .opt-title{
+    font-size:13.5px; font-weight:600; color:var(--ink);
+  }
+  .opt-sub{
+    font-size:11px; color:var(--ink-faint); margin-top:2px; line-height:1.5;
+  }
+  /* مفتاح تفعيل (Toggle Switch) بحجم مريح للمس على الهاتف */
+  .switch{
+    position:relative; width:48px; height:28px; flex:0 0 auto;
+  }
+  .switch input{opacity:0; width:0; height:0; position:absolute;}
+  .switch-track{
+    position:absolute; inset:0;
+    background:#D1D5DB;
+    border-radius:99px;
+    cursor:pointer;
+    transition:background .25s ease;
+  }
+  .switch-track::before{
+    content:"";
+    position:absolute; top:3px; right:3px;
+    width:22px; height:22px; border-radius:50%;
+    background:#fff;
+    box-shadow:0 1px 3px rgba(0,0,0,.25);
+    transition:transform .25s var(--ease);
+  }
+  .switch input:checked + .switch-track{background:var(--primary);}
+  .switch input:checked + .switch-track::before{transform:translateX(-20px);}
+
+  .opt-body{
+    max-height:0; overflow:hidden;
+    transition:max-height .32s var(--ease), opacity .28s ease;
+    opacity:0;
+    display:flex; align-items:center; gap:10px;
+  }
+  .opt-body.open{max-height:70px; opacity:1; padding-top:2px;}
+  .opt-label-text{
+    font-size:12.5px; color:var(--ink-soft);
+    flex:1; min-width:0;
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  .opt-body .subject-pts{ flex:0 0 auto; }
+
+  /* ===== بطاقة النتيجة النهائية (حلقة المعدل) ===== */
+  .result{
+    margin:22px 20px 0;
+    background:var(--card);
+    border:1px solid var(--card-border);
+    border-radius:var(--r-lg);
+    box-shadow:var(--sh-md);
+    padding:26px 20px;
+    display:flex; align-items:center; gap:22px;
+    transition:box-shadow .3s ease;
+  }
+  .result.reveal{ animation:resultReveal .55s var(--ease); }
+  @keyframes resultReveal{
+    0%{ transform:scale(0.97); box-shadow:var(--sh-sm); }
+    55%{ transform:scale(1.015); }
+    100%{ transform:scale(1); box-shadow:var(--sh-md); }
+  }
+  .ring-wrap{ position:relative; width:118px; height:118px; flex:0 0 auto;}
+  .ring-wrap svg{ width:118px; height:118px; transform:rotate(-90deg);}
+  .ring-bg{ fill:none; stroke:var(--card-border); stroke-width:10;}
+  .ring-fg{
+    fill:none; stroke:var(--ink-faint); stroke-width:10;
+    stroke-linecap:round;
+    stroke-dasharray:314;
+    stroke-dashoffset:314;
+    transition:stroke-dashoffset .6s var(--ease), stroke .4s ease;
+  }
+  .ring-center{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+  }
+  .ring-val{ font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:24px; color:var(--ink);}
+  .ring-lbl{ font-size:10px; color:var(--ink-faint); font-weight:500; margin-top:1px;}
+
+  .verdict-wrap{flex:1; min-width:0;}
+  .branch-name{
+    font-size:11.5px; font-weight:600; color:var(--primary-dark);
+    background:var(--primary-soft);
+    display:inline-block; padding:3px 10px; border-radius:99px;
+    margin-bottom:8px;
+  }
+  .verdict-row{display:flex; align-items:center; gap:8px; flex-wrap:wrap;}
+  .verdict{ font-size:19px; font-weight:700; color:var(--ink-soft); transition:color .3s ease;}
+  .grade-badge{
+    font-size:11px; font-weight:700;
+    padding:3px 10px; border-radius:99px;
+    display:none;
+  }
+  .grade-badge.show{display:inline-block;}
+  .grade-badge.success{background:var(--success-soft); color:var(--success);}
+  .grade-badge.primary{background:var(--primary-soft); color:var(--primary-dark);}
+  .grade-badge.amber{background:var(--amber-soft); color:var(--amber);}
+  .grade-badge.danger{background:var(--danger-soft); color:var(--danger);}
+  .verdict-sub{ font-size:12.5px; color:var(--ink-faint); margin-top:6px; line-height:1.6;}
+  .totals-mini{
+    display:flex; gap:14px; margin-top:10px; flex-wrap:wrap;
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-faint);
+  }
+
+  /* ===== صندوق شرح طريقة الحساب ===== */
+  .method-box{
+    margin:14px 20px 0;
+    background:var(--primary-soft);
+    border-radius:var(--r-md);
+    padding:13px 16px;
+    font-size:12.5px;
+    color:var(--primary-dark);
+    line-height:1.7;
+    display:flex; align-items:flex-start; gap:9px;
+  }
+  .method-box .ic{flex:0 0 auto; font-size:15px; line-height:1.4;}
+
+  /* ===== أزرار الإجراءات: إعادة تعيين / نسخ / مشاركة ===== */
+  .actions{
+    display:grid; grid-template-columns:1fr 1fr; gap:10px;
+    margin:16px 20px 0;
+  }
+  .actions .action-btn:last-child:nth-child(odd){ grid-column:1 / -1; }
+  .action-btn{
+    min-height:50px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px;
+    border-radius:var(--r-md);
+    border:1px solid var(--card-border);
+    background:var(--card);
+    color:var(--ink);
+    font-family:'IBM Plex Sans Arabic',sans-serif;
+    font-weight:600; font-size:12px;
+    cursor:pointer;
+    box-shadow:var(--sh-sm);
+    transition:transform .15s var(--ease), box-shadow .15s ease, background .15s ease;
+  }
+  .action-btn .ic{font-size:18px; line-height:1;}
+  .action-btn:active{transform:scale(0.95);}
+  .action-btn.primar
