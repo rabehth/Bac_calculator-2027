@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<!-- تطبيق الوضع الليلي المحفوظ فورًا (قبل رسم الصفحة) لتفادي أي وميض بالألوان الخاطئة -->
+<script>
+  try{
+    var savedTheme = localStorage.getItem('bacCalc2027_theme');
+    if(savedTheme === 'dark') document.documentElement.setAttribute('data-theme','dark');
+  }catch(e){}
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<!-- ===== عنوان الصفحة ===== -->
+<title>حاسبة معدل البكالوريا الجزائرية 2027</title>
+
+<!-- ===== وصف وكلمات مفتاحية لتحسين محركات البحث (SEO) ===== -->
+<meta name="description" content="حاسبة معدل البكالوريا الجزائرية 2027 — احسب معدلك بدقة في جميع الشعب (علوم تجريبية، رياضيات، هندسة، تسيير واقتصاد، آداب وفلسفة، لغات أجنبية، فنون) وفق المعاملات الرسمية الجديدة لوزارة التربية الوطنية، مع دعم المواد الاختيارية كالأمازيغية والتربية البدنية.">
+<meta name="keywords" content="حاسبة البكالوريا, معدل البكالوريا, بكالوريا الجزائر 2027, معاملات البكالوريا الجديدة, حساب معدل البكالوريا, شعب البكالوريا, bac algerie 2027, معدل البكالوريا الجزائرية, وزارة التربية الوطنية, الإصلاح الجديد للمناهج">
+<meta name="author" content="حاسبة معدل البكالوريا الجزائرية">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph (لعرض احترافي عند مشاركة الرابط) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="حاسبة معدل البكالوريا الجزائرية 2027">
+<meta property="og:description" content="احسب معدل البكالوريا بدقة حسب المعاملات الرسمية الجديدة لجميع الشعب.">
+<meta property="og:locale" content="ar_DZ">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="حاسبة معدل البكالوريا الجزائرية 2027">
+<meta name="twitter:description" content="احسب معدل البكالوريا بدقة حسب المعاملات الرسمية الجديدة لجميع الشعب.">
+
+<!-- ===== إعدادات PWA: يمكن تثبيت الموقع كتطبيق على الهاتف ===== -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#4F46E5">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="معدل البكالوريا">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,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">
+
+<!-- ===== الخطوط: IBM Plex Sans Arabic (خط عربي احترافي وواضح) ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <div class="toast" id="toast"></div>
+  <div class="topbar">
+    <div class="brand">
+      <img src="data:image/png;base64,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" alt="شعار التطبيق">
+      <div class="brand-text">
+        <h1>حاسبة معدل البكالوريا الجزائرية 2027</h1>
+        <div class="tag">معاملات ما بعد الإصلاح الجديد لوزارة التربية الوطنية</div>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الليلي/النهاري" title="الوضع الليلي">🌙</button>
+    </div>
+    <div class="progress-row">
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-label" id="progressLabel">0%</div>
+    </div>
+    <div class="progress-count" id="progressCount">0 من 0 مواد</div>
+  </div>
+
+  <div class="missing-banner" id="missingBanner"></div>
+
+  <div class="branch-scroller" id="branchPicker"></div>
+  <div class="legend">
+    <span><span class="dot new"></span> جميع الشعب بمعاملات الإصلاح الجديد الرسمية</span>
+  </div>
+
+  <div class="cards" id="cardsWrap"></div>
+
+  <div class="result">
+    <div class="ring-wrap">
+      <svg viewBox="0 0 118 118">
+        <circle class="ring-bg" cx="59" cy="59" r="50"></circle>
+        <circle class="ring-fg" id="ringFg" cx="59" cy="59" r="50"></circle>
+      </svg>
+      <div class="ring-center">
+        <div class="ring-val" id="avgVal">--</div>
+        <div class="ring-lbl">من 20</div>
+      </div>
+    </div>
+    <div class="verdict-wrap">
+      <div class="branch-name" id="branchNameLabel">اختر شعبتك أعلاه</div>
+      <div class="verdict-row">
+        <div class="verdict" id="verdict">أدخل علاماتك</div>
+        <span class="grade-badge" id="gradeBadge"></span>
+      </div>
+      <div class="verdict-sub" id="verdictSub">ابدأ بإدخال العلامات في الأعلى وسيظهر معدلك بعد إكمال جميع المواد</div>
+      <div class="totals-mini">
+        <span id="sumCoef">المعاملات: —</span>
+        <span id="sumPts">النقاط: —</span>
+        <span id="percentLabel">النسبة: —</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="method-box">
+    <span class="ic">ⓘ</span>
+    <span>طريقة الحساب: المعدل = مجموع (العلامة × المعامل) لكل مادة ÷ مجموع المعاملات. يظهر المعدل النهائي فقط بعد إدخال جميع المواد. النجاح من 10/20 فأكثر.</span>
+  </div>
+
+  <div class="actions">
+    <button class="action-btn reset" id="resetBtn"><span class="ic">↺</span>مسح جميع العلامات</button>
+    <button class="action-btn" id="copyBtn"><span class="ic">⧉</span>نسخ النتيجة</button>
+    <button class="action-btn" id="printBtn"><span class="ic">🖨️</span>طباعة النتيجة</button>
+    <button class="action-btn" id="pdfBtn"><span class="ic">📄</span>تحميل PDF</button>
+    <button class="action-btn primary" id="shareBtn"><span class="ic">↗</span>مشاركة النتيجة</button>
+  </div>
+
+  <div class="target-box">
+    <div class="target-head">
+      <span class="ic">🎯</span>
+      <span class="target-title">احسب العلامة المطلوبة لتحقيق معدل معين</span>
+    </div>
+    <div class="target-sub">أدخل المعدل الذي تطمح إليه، وسنحسب لك متوسط العلامات المطلوب في باقي المواد الفارغة.</div>
+    <div class="target-row">
+      <input type="number" min="0" max="20" step="0.25" class="target-input" id="targetAvgInput" placeholder="مثال: 14">
+      <button class="target-btn" id="targetCalcBtn">احسب</button>
+    </div>
+    <div class="target-result" id="targetResult"></div>
+  </div>
+
+  <footer>
+    حاسبة معدل البكالوريا الجزائرية 2027<br>
+    المعادلة: مجموع (العلامة × المعامل) ÷ مجموع المعاملات — النجاح من 10/20 فأكثر<br>
+    <span style="display:block; margin-top:6px;">📅 آخر تحديث للمعاملات: 31 يوليو 2026</span>
+    <span class="footer-links">
+      <a href="last-update.html">آخر تحديث</a>
+      <span>·</span>
+      <a href="about.html">حول التطبيق</a>
+      <span>·</span>
+      <a href="privacy.html">سياسة الخصوصية</a>
+    </span>
+    <span class="footer-disclaimer">
+      ⚠️ هذا التطبيق أداة مساعدة مستقلة غير رسمية، وغير تابع لوزارة التربية الوطنية الجزائرية.
+      النتائج تقريبية بناءً على الجداول العلنية المتاحة، ولا تُغني عن كشف النقاط الرسمي.
+    </span>
+  </footer>
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
